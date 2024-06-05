@@ -1,0 +1,71 @@
+services:
+    postgresql:
+        image: "postgres:${POSTGRESQL_TAG}"
+        hostname: "postgresql"
+        environment:
+            POSTGRES_DB: "keycloak"
+            POSTGRES_USER: "keycloak"
+            POSTGRES_PASSWORD: "keycloak"
+        restart: "always"
+        volumes:
+            - "./volumes/postgresql:/var/lib/postgresql/data"
+
+    waltid-ssikit:
+        image: "waltid/ssikit:${WALTID_SSIKIT_TAG}"
+        hostname: "waltid-ssikit"
+        ports:
+            - "${WALTID_SSIKIT_CORE_API_PORT}:7000"
+        command: ["serve", "-b", "0.0.0.0"]
+        restart: "always"
+        volumes:
+            - "./config/waltid-ssikit/signatory.conf:/app/config/signatory.conf"
+            - "./vc-templates:/vc-templates-runtime"
+            - "./volumes/waltid-ssikit:/app/data"
+
+    keycloak-vc-issuer:
+        image: "quay.io/fiware/keycloak-vc-issuer:${KEYCLOAK_VC_ISSUER_TAG}"
+        volumes:
+            - "./volumes/keycloak-vc-issuer/providers:/target"
+
+    keycloak:
+        image: "quay.io/keycloak/keycloak:${KEYCLOAK_TAG}"
+        hostname: "keycloak"
+        user: "root"
+        environment:
+            KEYCLOAK_ADMIN: "${KEYCLOAK_ADMIN_USERNAME}"
+            KEYCLOAK_ADMIN_PASSWORD: "${KEYCLOAK_ADMIN_PASSWORD}"
+            KC_HOSTNAME_URL: "${KEYCLOAK_URL}"
+            KC_HOSTNAME_ADMIN_URL: "${KEYCLOAK_URL}"
+            KC_DB: "postgres"
+            KC_DB_URL_HOST: "postgresql"
+            KC_DB_URL_PORT: 5432
+            KC_DB_URL_DATABASE: "keycloak"
+            KC_DB_USERNAME: "keycloak"
+            KC_DB_PASSWORD: "keycloak"
+            KC_PROXY: "passthrough"
+            KC_HTTP_ENABLED: "true"
+            VCISSUER_WALTID_ADDRESS: "http://waltid-ssikit"
+            VCISSUER_WALTID_CORE_PORT: 7000
+            VCISSUER_WALTID_SIGNATORY_PORT: 7001
+            VCISSUER_ISSUER_DID: "${DID}"
+            VCISSUER_ISSUER_KEY_FILE: "/opt/keys/did.json"
+        command: "start"
+        restart: "always"
+        volumes:
+            - "./volumes/keycloak:/data"
+            - "./volumes/keycloak-vc-issuer/providers:/opt/keycloak/providers"
+            - "./did.json:/opt/keys/did.json"
+        depends_on:
+            - "postgresql"
+            - "waltid-ssikit"
+            - "keycloak-vc-issuer"
+
+    nginx:
+        image: "nginx:${NGINX_TAG}"
+        hostname: "nginx"
+        ports:
+            - "443:443"
+        restart: "always"
+        volumes:
+            - "./config/nginx/nginx-consumer.conf:/etc/nginx/nginx.conf"
+            - "/etc/letsencrypt:/etc/letsencrypt"

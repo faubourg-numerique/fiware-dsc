@@ -1,0 +1,11 @@
+/.env
+/did.json
+
+/certificates/*
+!/certificates/.gitkeep
+
+/config/nginx/nginx-consumer.conf
+/config/waltid-ssikit/signatory.conf
+/config/keycloak/realms/vc-issuer.json
+
+/volumes

@@ -1,0 +1,9 @@
+proofConfig {
+    issuerDid="did:web:example.com"
+    issuerVerificationMethod="did:web:example.com#00000000000000000000000000000000"
+    proofType="LD_PROOF"
+    domain="example.com"
+    nonce="00000000-0000-0000-0000-000000000000"
+    credentialsEndpoint="http://127.0.0.1:7001/v1/credentials"
+}
+templatesFolder: "/vc-templates-runtime"

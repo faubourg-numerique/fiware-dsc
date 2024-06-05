@@ -1,0 +1,12 @@
+services:
+    waltid-ssikit:
+        image: "waltid/ssikit:${WALTID_SSIKIT_TAG}"
+        hostname: "waltid-ssikit"
+        ports:
+            - "${WALTID_SSIKIT_CORE_API_PORT}:7000"
+        command: ["serve", "-b", "0.0.0.0"]
+        restart: "always"
+        volumes:
+            - "./config/waltid-ssikit/signatory.conf:/app/config/signatory.conf"
+            - "./vc-templates:/vc-templates-runtime"
+            - "./volumes/waltid-ssikit:/app/data"
