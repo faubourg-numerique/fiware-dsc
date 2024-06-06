@@ -1,0 +1,30 @@
+_format_version: "2.1"
+_transform: true
+consumers:
+- username: "token-consumer"
+  keyauth_credentials:
+  - tags:
+    - "token-key"
+    - "tir-key"
+services:
+  - url: "http://orion-ld:1026"
+    name: "context-broker"
+    port: 1026
+    protocol: "http"
+    routes:
+      - name: "context-broker"
+        paths:
+          - "/context-broker"
+        strip_path: true
+    plugins:
+      - name: "pep-plugin"
+        config:
+          pathprefix: "/context-broker"
+          authorizationendpointtype: "ExtAuthz"
+          authorizationendpointaddress: "http://dsba-pdp:8080/authz"
+      - name: "request-transformer"
+        config:
+          remove:
+            headers:
+              - "Authorization"
+              - "authorization"

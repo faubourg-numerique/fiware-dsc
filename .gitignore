@@ -4,8 +4,10 @@
 /certificates/*
 !/certificates/.gitkeep
 
-/config/nginx/nginx-consumer.conf
-/config/waltid-ssikit/signatory.conf
+/config/activation-service/as.yml
 /config/keycloak/realms/vc-issuer.json
+/config/nginx/nginx-consumer.conf
+/config/vc-verifier/server.yaml
+/config/waltid-ssikit/signatory.conf
 
 /volumes

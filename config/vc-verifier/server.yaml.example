@@ -1,0 +1,31 @@
+server:
+    port: 8080
+    templateDir: "views/"
+    staticDir: "views/static/"
+logging:
+    level: "DEBUG"
+    jsonLogging: true
+    logRequests: true
+verifier:
+    did: "did:web:example.com"
+    tirAddress: "https://tir.dsba.fiware.dev/v3/issuers"
+    sessionExpiry: 30
+ssiKit:
+    auditorURL: "http://walt-id-ssi-kit:7003"
+configRepo:
+    configEndpoint: "http://credentials-config-service:8080"
+    services:
+        testService:
+            scope:
+                - "VerifiableCredential"
+                - "CustomerCredential"
+            trustedParticipants:
+                VerifiableCredential:
+                - "https://tir-pdc.gaia-x.fiware.dev"
+                CustomerCredential:
+                - "https://tir-pdc.gaia-x.fiware.dev"
+            trustedIssuers:
+                VerifiableCredential:
+                - "https://tir-pdc.gaia-x.fiware.dev"
+                CustomerCredential:
+                - "https://tir-pdc.gaia-x.fiware.dev"

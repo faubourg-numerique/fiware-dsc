@@ -1,0 +1,25 @@
+db:
+  useMemory: true
+  modTracking: false
+  echo: true
+apikeys:
+  ishare:
+    enabledToken: false
+    enabledCreatePolicy: false
+  issuer:
+    headerName: "AS-API-KEY"
+    apiKey: "00000000-0000-0000-0000-000000000000"
+    enabledIssuer: true
+issuer:
+  clientId: "example-activation-service"
+  providerId: "did:web:example.com"
+  tilUri: "http://trusted-issuers-list:8080"
+  verifierUri: "https://vc-verifier.example.com"
+  samedevicePath: "/api/v1/samedevice"
+  jwksPath: "/.well-known/jwks"
+  algorithms:
+    - "ES256"
+  roles:
+    createRole: "CREATE_ISSUER"
+    updateRole: "UPDATE_ISSUER"
+    deleteRole: "DELETE_ISSUER"
