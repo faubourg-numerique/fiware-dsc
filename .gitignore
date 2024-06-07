@@ -7,6 +7,7 @@
 /config/activation-service/as.yml
 /config/keycloak/realms/vc-issuer.json
 /config/nginx/nginx-consumer.conf
+/config/nginx/nginx-provider.conf
 /config/vc-verifier/server.yaml
 /config/waltid-ssikit/signatory.conf
 

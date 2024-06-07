@@ -1,5 +1,24 @@
 # fiware-dsc
 
+<ul>
+    <a href="#getting-started">Getting Started</a>
+    <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li>
+            <a href="#deployment">Deployment</a>
+            <ul>
+                <li><a href="#clone-the-repository">Clone the repository</a></li>
+                <li><a href="#create-environment-variables">Create environment variables</a></li>
+                <li><a href="#generate-the-did">Generate the DID</a></li>
+                <li><a href="#consumer-configuration">Consumer configuration</a></li>
+                <li><a href="#provider-configuration">Provider configuration</a></li>
+                <li><a href="#keycloak-configuration">Keycloak configuration</a></li>
+                <li><a href="#onboarding">Onboarding</a></li>
+            </ul>
+        </li>
+    </ul>
+</ul>
+
 ## Getting Started
 
 ### Prerequisites
@@ -8,9 +27,28 @@
 - [Docker Engine](https://docs.docker.com/engine/install/debian/)
 - [Docker Compose](https://docs.docker.com/compose/install/) (included with Docker Engine)
 - [Certbot](https://certbot.eff.org/instructions?ws=other&os=debianbuster)
+- [Git](https://git-scm.com/) `sudo apt install git`
 - wget `sudo apt install wget`
 
-### Create environment variables
+### Deployment
+
+> In our example, we will use the domain name example.com. Replace it with yours wherever it appears.
+
+#### Clone the repository
+
+- Clone this repository
+
+    ```
+    git clone https://github.com/faubourg-numerique/fiware-dsc.git
+    ```
+
+- Access the cloned repository
+
+    ```
+    cd fiware-dsc
+    ```
+
+#### Create environment variables
 
 - Create and edit the environment file
 
@@ -18,7 +56,7 @@
     cp ./.env.example ./.env
     ```
 
-### Generate the DID
+#### Generate the DID
 
 - Create type A DNS entry for the following domain
 
@@ -118,9 +156,9 @@
 
     > The DID can be found in **./did.json**. As for the nonce, it is a unique identifier which can for example be a [UUID](https://www.uuidgenerator.net/).
 
-- Update the `DID` environment variable of the **./.env** file
+- Update the `DID`, `CERTIFICATE` and `PRIVATE_KEY` environment variables of the **./.env** file
 
-### Consumer
+#### Consumer configuration
 
 - Create type A DNS entries for the following subdomain
 
@@ -142,7 +180,63 @@
     sudo docker compose -f docker-compose-consumer.yml up -d
     ```
 
-### Keycloak configuration
+- [Configure Keycloak](#keycloak-configuration)
+
+- [Perform the onboarding](#onboarding)
+
+#### Provider configuration
+
+- Create type A DNS entries for the following subdomain
+
+    - keycloak.example.com
+    - idm.example.com
+    - as.example.com
+    - vc-verifier.example.com
+    - context-broker.example.com
+
+- Generate HTTPS certificates
+
+    - `sudo certbot certonly --standalone -d keycloak.example.com`
+    - `sudo certbot certonly --standalone -d idm.example.com`
+    - `sudo certbot certonly --standalone -d as.example.com`
+    - `sudo certbot certonly --standalone -d vc-verifier.example.com`
+    - `sudo certbot certonly --standalone -d context-broker.example.com`
+
+- Create and edit the **./config/nginx/nginx-provider.conf** config file
+
+    ```
+    cp ./config/nginx/nginx-provider.conf.example ./config/nginx/nginx-provider.conf
+    ```
+
+- Create and edit the **./config/activation-service/as.yml** config file
+
+    ```
+    cp ./config/activation-service/as.yml.example ./config/activation-service/as.yml
+    ```
+
+- Create and edit the **./config/kong/kong.yaml** config file
+
+    ```
+    cp ./config/kong/kong.yaml.example ./config/kong/kong.yaml
+    ```
+
+- Create and edit the **./config/vc-verifier/server.yaml** config file
+
+    ```
+    cp ./config/vc-verifier/server.yaml.example ./config/vc-verifier/server.yaml
+    ```
+
+- Run the provider docker compose script
+
+    ```
+    sudo docker compose -f docker-compose-provider.yml up -d
+    ```
+
+- [Configure Keycloak](#keycloak-configuration)
+
+- [Perform the onboarding](#onboarding)
+
+#### Keycloak configuration
 
 - Create the **./config/keycloak/realms/vc-issuer.json** realm file
 
@@ -207,9 +301,11 @@
 
     ![](images/keycloak/75d97aa9-4aad-42b2-aa0c-704b4c81c35f.png)
 
-### Onboarding
+#### Onboarding
 
 - From the phone, go to https://demo-wallet.fiware.dev/
+
+    ![](images/wallet/97d4af9e-0634-4e7f-b489-67736a2c09d9.png)
 
 - From the computer, go to https://keycloak.example.com/realms/vc-issuer/account/
 
@@ -237,9 +333,13 @@
 
 - Click on the **Save** button
 
+    ![](images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png)
+
 - Click on **Get Compliancy Credential** at the bottom of the page
 
 - Click on **FIWARE Compliance Service**
+
+    ![](images/wallet/97f0f9fb-8c66-4bcf-beb6-9542617d2a5e.png)
 
 - Click on the **Home** button
 
@@ -260,5 +360,7 @@
 - Scan the QR code with the wallet
 
 - Click on the **Send Credential** button
+
+    ![](images/wallet/db45e531-9933-4cfb-8571-e0cebbaf9b05.png)
 
 - Click on the **+** button

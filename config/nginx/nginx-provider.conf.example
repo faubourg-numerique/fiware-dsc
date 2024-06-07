@@ -1,0 +1,97 @@
+example.comevents {
+}
+
+http {
+    server_names_hash_bucket_size 128;
+
+    server {
+        server_name keycloak.example.com;
+
+        listen 443 ssl;
+
+        ssl_certificate /etc/letsencrypt/live/keycloak.example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/keycloak.example.com/privkey.pem;
+
+        location / {
+            proxy_pass http://keycloak:8080;
+
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Server $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_hide_header Access-Control-Allow-Origin;
+            proxy_hide_header Access-Control-Allow-Methods;
+            proxy_hide_header Access-Control-Allow-Headers;
+
+            if ($request_method = "OPTIONS") {
+                add_header Access-Control-Allow-Origin "*" always;
+                add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+                add_header Access-Control-Allow-Headers "Authorization, Content-Type" always;
+                add_header Access-Control-Allow-Credentials "true" always;
+                add_header Content-Type "text/plain; charset=UTF-8" always;
+                add_header Content-Length 0 always;
+                return 204;
+            }
+
+            add_header Access-Control-Allow-Origin "*" always;
+            add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+            add_header Access-Control-Allow-Headers "Authorization, Content-Type" always;
+        }
+    }
+
+    server {
+        server_name idm.example.com;
+
+        listen 443 ssl;
+
+        ssl_certificate /etc/letsencrypt/live/idm.example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/idm.example.com/privkey.pem;
+
+        location / {
+            proxy_pass http://keyrock:3000;
+        }
+    }
+
+    server {
+        server_name as.example.com;
+
+        listen 443 ssl;
+
+        ssl_certificate /etc/letsencrypt/live/as.example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/as.example.com/privkey.pem;
+
+        location / {
+            proxy_pass http://activation-service:8080;
+        }
+    }
+
+    server {
+        server_name vc-verifier.example.com;
+
+        listen 443 ssl;
+
+        ssl_certificate /etc/letsencrypt/live/vc-verifier.example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/vc-verifier.example.com/privkey.pem;
+
+        location / {
+            proxy_pass http://vc-verifier:8080;
+            proxy_set_header Host vc-verifier.example.com;
+        }
+    }
+
+    server {
+        server_name context-broker.example.com;
+
+        listen 443 ssl;
+
+        ssl_certificate /etc/letsencrypt/live/context-broker.example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/context-broker.example.com/privkey.pem;
+
+        location / {
+            proxy_pass http://kong:8080;
+        }
+    }
+}
