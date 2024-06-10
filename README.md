@@ -251,79 +251,119 @@
 
 - Login to the Keyrock administration console
 
-    ![](images/keycloak/0cad6118-1ccd-4be2-82f5-667012fd00a0.png)
+    <details>
+        <img src="images/keycloak/0cad6118-1ccd-4be2-82f5-667012fd00a0.png">
+    </details>
 
-    ![](images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png)
+    <details>
+        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
+    </details>
 
 - Create a realm **vc-issuer**
 
-    ![](images/keycloak/d5546e60-24d3-438a-ac86-cac40436e119.png)
+    <details>
+        <img src="images/keycloak/d5546e60-24d3-438a-ac86-cac40436e119.png">
+    </details>
 
-    ![](images/keycloak/640a1618-23a7-4d1d-bf33-af4e34a2dd5f.png)
+    <details>
+        <img src="images/keycloak/640a1618-23a7-4d1d-bf33-af4e34a2dd5f.png">
+    </details>
 
 - Go to the **Users** tab
 
-    ![](images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png)
+    <details>
+        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
+    </details>
 
 - Create an **admin** user
 
-    ![](images/keycloak/220ce34d-6e04-4b91-848b-ff6401adf506.png)
+    <details>
+        <img src="images/keycloak/220ce34d-6e04-4b91-848b-ff6401adf506.png">
+    </details>
 
-    ![](images/keycloak/0c6c93f4-d947-47dc-8fad-b3429ffb24a2.png)
+    <details>
+        <img src="images/keycloak/0c6c93f4-d947-47dc-8fad-b3429ffb24a2.png">
+    </details>
 
     > It is important to fill in all fields (email, first name, last name...)
 
 - Go to the **Credentials** tab
 
-    ![](images/keycloak/8ea085a7-dda8-4ecb-83dd-93601e1e492f.png)
+    <details>
+        <img src="images/keycloak/8ea085a7-dda8-4ecb-83dd-93601e1e492f.png">
+    </details>
 
 - Set a password
 
-    ![](images/keycloak/9129f86e-021c-4fa9-94ce-cd2fa7c3c761.png)
+    <details>
+        <img src="images/keycloak/9129f86e-021c-4fa9-94ce-cd2fa7c3c761.png">
+    </details>
 
-    ![](images/keycloak/377e9176-3cbc-4b36-bb08-08c34e4e01ad.png)
+    <details>
+        <img src="images/keycloak/377e9176-3cbc-4b36-bb08-08c34e4e01ad.png">
+    </details>
 
-    ![](images/keycloak/acffea80-8f8d-4bb7-bdeb-1ecb7f6b68af.png)
+    <details>
+        <img src="images/keycloak/acffea80-8f8d-4bb7-bdeb-1ecb7f6b68af.png">
+    </details>
 
 - Go to the **Role mapping** tab
 
-    ![](images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png)
+    <details>
+        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
+    </details>
 
 - Click the **Assign role** button
 
-    ![](images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png)
+    <details>
+        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
+    </details>
 
 - Filter the roles by clients
 
-    ![](images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png)
+    <details>
+        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
+    </details>
 
 - Assin the **LEGAL_REPRESENTATIVE** role
 
-    ![](images/keycloak/75d97aa9-4aad-42b2-aa0c-704b4c81c35f.png)
+    <details>
+        <img src="images/keycloak/75d97aa9-4aad-42b2-aa0c-704b4c81c35f.png">
+    </details>
 
 #### Onboarding
 
 - From the phone, go to https://demo-wallet.fiware.dev/
 
-    ![](images/wallet/97d4af9e-0634-4e7f-b489-67736a2c09d9.png)
+    <details>
+        <img src="images/wallet/97d4af9e-0634-4e7f-b489-67736a2c09d9.png">
+    </details>
 
 - From the computer, go to https://keycloak.example.com/realms/vc-issuer/account/
 
 - Go to **Verifiable Credentials**
 
-    ![](images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png)
+    <details>
+        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
+    </details>
 
 - Login using the **vc-issuer** realm **admin** user
 
-    ![](images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png)
+    <details>
+        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
+    </details>
 
 - Select **GaiaXParticipantCredential ldp_vc** in the drop-down list
 
-    ![](images/keycloak/99a012e8-532a-460c-b215-54782eb66c7b.png)
+    <details>
+        <img src="images/keycloak/99a012e8-532a-460c-b215-54782eb66c7b.png">
+    </details>
 
 - Click on the **Initiate Credential-Issuance(OIDC4CI)** button
 
-    ![](images/keycloak/ada8e092-3041-499b-8b51-12fa6ef942f5.png)
+    <details>
+        <img src="images/keycloak/ada8e092-3041-499b-8b51-12fa6ef942f5.png">
+    </details>
 
     > If an error occurs, refresh the page and try again.
 
@@ -333,19 +373,25 @@
 
 - Click on the **Save** button
 
-    ![](images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png)
+    <details>
+        <img src="images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png">
+    </details>
 
 - Click on **Get Compliancy Credential** at the bottom of the page
 
 - Click on **FIWARE Compliance Service**
 
-    ![](images/wallet/97f0f9fb-8c66-4bcf-beb6-9542617d2a5e.png)
+    <details>
+        <img src="images/wallet/97f0f9fb-8c66-4bcf-beb6-9542617d2a5e.png">
+    </details>
 
 - Click on the **Home** button
 
 - Select **NaturalPersonCredential ldp_vc** and click on the **Initiate Credential-Issuance(OIDC4CI)** button
 
-    ![](images/keycloak/4d5d4a1e-c45e-4065-95ad-9fdc6db43461.png)
+    <details>
+        <img src="images/keycloak/4d5d4a1e-c45e-4065-95ad-9fdc6db43461.png">
+    </details>
 
 - Scan and save this second QR code in the wallet
 
@@ -355,12 +401,16 @@
 
 - Click on **Login with VC**
 
-    ![](images/keycloak/d6e439dc-94fe-48bf-b824-f21f746f863d.png)
+    <details>
+        <img src="images/keycloak/d6e439dc-94fe-48bf-b824-f21f746f863d.png">
+    </details>
 
 - Scan the QR code with the wallet
 
 - Click on the **Send Credential** button
 
-    ![](images/wallet/db45e531-9933-4cfb-8571-e0cebbaf9b05.png)
+    <details> 
+        <img src="images/wallet/db45e531-9933-4cfb-8571-e0cebbaf9b05.png">
+    </details>
 
 - Click on the **+** button
