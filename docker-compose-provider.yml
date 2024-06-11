@@ -36,6 +36,7 @@ services:
             MYSQL_USER: "trusted-issuers-list"
             MYSQL_PASSWORD: "trusted-issuers-list"
             MYSQL_DATABASE: "trusted-issuers-list"
+            MYSQL_ROOT_PASSWORD: "root"
         restart: "always"
         volumes:
             - "./volumes/mysql-trusted-issuers-list:/var/lib/mysql"
@@ -47,6 +48,7 @@ services:
             MYSQL_USER: "credentials-config-service"
             MYSQL_PASSWORD: "credentials-config-service"
             MYSQL_DATABASE: "credentials-config-service"
+            MYSQL_ROOT_PASSWORD: "root"
         restart: "always"
         volumes:
             - "./volumes/mysql-credentials-config-service:/var/lib/mysql"
@@ -252,5 +254,5 @@ services:
             - "443:443"
         restart: "always"
         volumes:
-            - "./config/nginx/nginx-consumer.conf:/etc/nginx/nginx.conf"
+            - "./config/nginx/nginx-provider.conf:/etc/nginx/nginx.conf"
             - "/etc/letsencrypt:/etc/letsencrypt"

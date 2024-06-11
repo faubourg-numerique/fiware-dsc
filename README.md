@@ -214,12 +214,6 @@
     cp ./config/activation-service/as.yml.example ./config/activation-service/as.yml
     ```
 
-- Create and edit the **./config/kong/kong.yaml** config file
-
-    ```
-    cp ./config/kong/kong.yaml.example ./config/kong/kong.yaml
-    ```
-
 - Create and edit the **./config/vc-verifier/server.yaml** config file
 
     ```
