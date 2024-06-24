@@ -1,22 +1,31 @@
 # fiware-dsc
 
 <ul>
-    <a href="#getting-started">Getting Started</a>
-    <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li>
-            <a href="#deployment">Deployment</a>
-            <ul>
-                <li><a href="#clone-the-repository">Clone the repository</a></li>
-                <li><a href="#create-environment-variables">Create environment variables</a></li>
-                <li><a href="#generate-the-did">Generate the DID</a></li>
-                <li><a href="#consumer-configuration">Consumer configuration</a></li>
-                <li><a href="#provider-configuration">Provider configuration</a></li>
-                <li><a href="#keycloak-configuration">Keycloak configuration</a></li>
-                <li><a href="#onboarding">Onboarding</a></li>
-            </ul>
-        </li>
-    </ul>
+    <li>
+        <a href="#getting-started">Getting Started</a>
+        <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li>
+                <a href="#deployment">Deployment</a>
+                <ul>
+                    <li><a href="#clone-the-repository">Clone the repository</a></li>
+                    <li><a href="#create-environment-variables">Create environment variables</a></li>
+                    <li><a href="#generate-the-did">Generate the DID</a></li>
+                    <li><a href="#consumer-configuration">Consumer configuration</a></li>
+                    <li><a href="#provider-configuration">Provider configuration</a></li>
+                    <li><a href="#keycloak-configuration">Keycloak configuration</a></li>
+                    <li><a href="#onboarding">Onboarding</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#usage">Usage</a>
+        <ul>
+            <li><a href="#consumer">Consumer</a></li>
+            <li><a href="#provider">Provider</a></li>
+        </ul>
+    </li>
 </ul>
 
 ## Getting Started
@@ -433,3 +442,349 @@
     </details>
 
 - Click on the **+** button
+
+## Usage
+
+> ⚠️ The user documentation is being written and is currently unfinished
+
+- Go to [Keycloak](https://keycloak.example.com/)
+
+- Log in to the Administration Console
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
+    </details>
+
+- Open the **vc-issuer** realm
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/5f7a79b3-d8d0-410f-9f93-971babded507.png">
+    </details>
+
+- Go to the **Users** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
+    </details>
+
+- Open the **admin** user details
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a7ff5b41-5e02-493e-9d93-1b9285d10e1d.png">
+    </details>
+
+- Go to the **Role mapping** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
+    </details>
+
+- Click the **Assign role** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
+    </details>
+
+- Filter the roles by clients
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
+    </details>
+
+- Assin the **customer** and or **seller** roles
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/cb8aaabb-0cdb-4e0e-971b-df9d7db0eac7.png">
+    </details>
+
+- From the computer, go to https://keycloak.example.com/realms/vc-issuer/account/
+
+- Go to **Verifiable Credentials**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
+    </details>
+
+- Login using the **vc-issuer** realm **admin** user
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
+    </details>
+
+- Select **MarketplaceUserCredential ldp_vc** in the drop-down list
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/4c5ae335-9451-4bc1-9ad8-9213108af334.png">
+    </details>
+
+- Click on the **Initiate Credential-Issuance(OIDC4CI)** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/ada8e092-3041-499b-8b51-12fa6ef942f5.png">
+    </details>
+
+    > If an error occurs, refresh the page and try again.
+
+- Click on the **Scan QR** button in the wallet
+
+- Scan the QR code
+
+- Click on the **Save** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png">
+    </details>
+
+- Go to the [DOME Marketplace](https://marketplace.dsba.fiware.dev)
+
+- Click on the **Sign in** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/d645ea40-d70a-4d13-a3ab-5c6b6c08d6d1.png">
+    </details>
+
+- Select **VC Login** and click on the **Sign in* button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
+    </details>
+
+- Click on the admin user then click on **settings**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
+    </details>
+
+- Go to the **Contact mediums** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
+    </details>
+
+- Create a new billing address
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/b1e15fd8-4cdc-4b08-ab28-73d8d0952b5d.png">
+    </details>
+
+### Consumer
+
+### Provider
+
+- Create the following Keycloak client file **did_web_example.com.json**
+
+    ```json
+    {
+        "clientId": "did:web:example.com",
+        "description": "did:web:example.com",
+        "surrogateAuthRequired": false,
+        "enabled": true,
+        "alwaysDisplayInConsole": false,
+        "clientAuthenticatorType": "client-secret",
+        "secret": "**********",
+        "redirectUris": [],
+        "webOrigins": [],
+        "notBefore": 0,
+        "bearerOnly": false,
+        "consentRequired": false,
+        "standardFlowEnabled": true,
+        "implicitFlowEnabled": false,
+        "directAccessGrantsEnabled": false,
+        "serviceAccountsEnabled": false,
+        "publicClient": false,
+        "frontchannelLogout": false,
+        "protocol": "SIOP-2",
+        "attributes": {
+            "post.logout.redirect.uris": "+",
+            "client.secret.creation.time": "1675260539",
+            "expiryInMin": "3600",
+            "ExampleCredential_claims": "email,firstName,lastName,roles",
+            "vctypes_ExampleCredential": "ldp_vc,jwt_vc_json"
+        },
+        "authenticationFlowBindingOverrides": {},
+        "fullScopeAllowed": true,
+        "nodeReRegistrationTimeout": -1,
+        "defaultClientScopes": [],
+        "optionalClientScopes": [],
+        "access": {
+            "view": true,
+            "configure": true,
+            "manage": true
+        }
+    }
+    ```
+
+- Edit `clientId`, `description`, and the keys of `attributes.ExampleCredential_claims` and `attributes.vctypes_ExampleCredential`
+
+- Go to the **Clients** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
+    </details>
+
+- Click on **Import client**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/57e30dcb-305e-4291-98aa-1d149c119947.png">
+    </details>
+
+- Select the **did_web_example.com.json** resource file and click on the **Save** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/211dd4d1-8939-4d65-9316-6891c6520022.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/0c08e99b-b4e8-4b3c-aee0-f6e4ca43072e.png">
+    </details>
+
+- Go back to the **Clients** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
+    </details>
+
+- Click on **did:web:example.com**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/70d91309-f6c0-44a9-9e8e-bb7815459e82.png">
+    </details>
+
+- Go to the **Roles** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/c3f083c6-89ee-469c-8c28-d7f0e7f8006a.png">
+    </details>
+
+- Click on the **Create role** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/fcf33d07-552a-45e0-842b-77e5bc678075.png">
+    </details>
+
+- Enter the role name (e.g. EXAMPLE) and click on the **Save** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/58695ba0-00fd-4abd-9f7c-ad53aa36a439.png">
+    </details>
+
+- Go to the **Users** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
+    </details>
+
+- Open the **admin** user details
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a7ff5b41-5e02-493e-9d93-1b9285d10e1d.png">
+    </details>
+
+- Go to the **Role mapping** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
+    </details>
+
+- Click the **Assign role** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
+    </details>
+
+- Filter the roles by clients
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
+    </details>
+
+- Select the **EXAMPLE** role and click the **Assign** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/05b701d6-2428-441c-b315-1397f19eabda.png">
+    </details>
+
+- Authenticate to the [DOME Marketplace](https://marketplace.dsba.fiware.dev)
+
+- Go to the **My stock** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/e94319f7-e57e-4eb3-90d6-a44b44de8e41.png">
+    </details>
+
+- Go to the **Catalogs** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/e3aacce1-822d-4fe2-b8db-45e6e44f7706.png">
+    </details>
+
+- Click the **New** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/27abf8e7-7fca-4e40-9d28-4c6088d0ea0a.png">
+    </details>
+
+- Create a new catalog
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/e8168f72-587d-4cf9-acb1-8f29b3e58e82.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/690e68c6-eb38-474b-a034-44183b1c6703.png">
+    </details>
+
+- Select the **Launched** status and click on the **Update** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/51cd0d6d-48bc-4496-9f66-f5d4fd4bd476.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/9d2fdae9-38de-4112-8290-84b152b0c333.png">
+    </details>
