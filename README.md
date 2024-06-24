@@ -594,6 +594,8 @@
 
 ### Provider
 
+#### Keycloak configuration
+
 - Create the following Keycloak client file **did_web_example.com.json**
 
     ```json
@@ -741,6 +743,8 @@
         <summary>Image</summary>
         <img src="images/keycloak/05b701d6-2428-441c-b315-1397f19eabda.png">
     </details>
+
+#### Marketplace configuration
 
 - Authenticate to the [DOME Marketplace](https://marketplace.dsba.fiware.dev)
 
