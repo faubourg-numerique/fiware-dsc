@@ -792,3 +792,63 @@
         <summary>Image</summary>
         <img src="images/keycloak/9d2fdae9-38de-4112-8290-84b152b0c333.png">
     </details>
+
+#### ouranos-ws configuration
+
+- Authenticate to [ouranos-ws](https://app.dscaas.ouranos-ws.com)
+
+- Go to **Administration** - **Authorization registries**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/b113e43f-b059-4912-8772-5fb1d3e151cd.png">
+    </details>
+
+- Click the **+** button to create a new authorization registry
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/17cfcf8c-b1ca-4e0a-984d-a5e453779b13.png">
+    </details>
+
+- Go to **Administration** - **Authorization registry grants**
+
+- Click the **+** button to create a new authorization registry grant
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/253e38c8-ae45-413f-a83f-398dfc0c8e4d.png">
+    </details>
+
+- Go to **Administration** - **VC verifiers**
+
+- Click the **+** button to create a new vc verifier
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/839315fb-b1e8-4b33-bd47-dcd3f223a0ff.png">
+    </details>
+
+- Go to **Administration** - **Trusted issuers lists**
+
+- Click the **+** button to create a new trusted issuers list
+
+    > To be reviewed, the trusted issuers list is not publicly accessible.
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/839315fb-b1e8-4b33-bd47-dcd3f223a0ff.png">
+    </details>
+
+- Go to **Administration** - **Context brokers**
+
+- Click the **+** button to create a new context broker
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/e0bb0842-2ae8-41a7-95a1-2453ecd089cd.png">
+    </details>
+
+- Go to **Administration** - **Services**
+
+- Click the **+** button to create a new service
