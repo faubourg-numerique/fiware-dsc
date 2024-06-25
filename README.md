@@ -1,5 +1,7 @@
 # fiware-dsc
 
+> ⚠️ This documentation is being written and is currently uncomplete.
+
 <ul>
     <li>
         <a href="#getting-started">Getting Started</a>
@@ -22,8 +24,22 @@
     <li>
         <a href="#usage">Usage</a>
         <ul>
-            <li><a href="#consumer">Consumer</a></li>
-            <li><a href="#provider">Provider</a></li>
+            <li>
+                <a href="#provider">Provider</a>
+                <ul>
+                    <li><a href="#walt-id-ssi-kit-configuration">walt.id SSI Kit configuration</a></li>
+                    <li><a href="#credentials-config-service-configuration">Credentials config service configuration</a></li>
+                    <li><a href="#trusted-issuers-list-configuration">Trusted issuers list configuration</a></li>
+                    <li><a href="#keycloak-configuration-1">Keycloak configuration</a></li>
+                    <li><a href="#ouranos-ws-configuration">ouranos-ws configuration</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#annexes">Annexes</a>
+        <ul>
+            <li><a href="#generate-a-vc-and-add-it-to-the-wallet">Generate a VC and add it to the Wallet</a></li>
         </ul>
     </li>
 </ul>
@@ -158,12 +174,12 @@
 
 - Edit the following fields of the **./config/waltid-ssikit/signatory.conf** config file
 
-    - proofConfig.issuerDid
-    - proofConfig.issuerVerificationMethod
-    - proofConfig.domain
-    - proofConfig.nonce
+    - `proofConfig.issuerDid`
+    - `proofConfig.issuerVerificationMethod`
+    - `proofConfig.domain`
+    - `proofConfig.nonce`
 
-    > The DID can be found in **./did.json**. As for the nonce, it is a unique identifier which can for example be a [UUID](https://www.uuidgenerator.net/).
+    > The DID can be found in **./did.json**. The nonce have to be a unique identifier which can for example be a [UUID](https://www.uuidgenerator.net/).
 
 - Update the `DID`, `CERTIFICATE` and `PRIVATE_KEY` environment variables of the **./.env** file
 
@@ -249,8 +265,8 @@
 
 - Edit the following fields of the **./config/keycloak/realms/vc-issuer.json** realm file
 
-    - clients[5].attributes.vc_gx:legalName (line 767)
-    - clients[5].attributes.vc_subjectDid (line 768)
+    - `clients[5].attributes.vc_gx:legalName` (line 767)
+    - `clients[5].attributes.vc_subjectDid` (line 768)
 
 - Login to the Keyrock administration console
 
@@ -351,77 +367,10 @@
 
 #### Onboarding
 
-- From the phone, go to https://demo-wallet.fiware.dev/
+- Refer to [this annex](#generate-a-vc-and-add-it-to-the-wallet) to generate and add to the Wallet the following verifiable credentials:
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/wallet/97d4af9e-0634-4e7f-b489-67736a2c09d9.png">
-    </details>
-
-- From the computer, go to https://keycloak.example.com/realms/vc-issuer/account/
-
-- Go to **Verifiable Credentials**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
-    </details>
-
-- Login using the **vc-issuer** realm **admin** user
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
-    </details>
-
-- Select **GaiaXParticipantCredential ldp_vc** in the drop-down list
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/99a012e8-532a-460c-b215-54782eb66c7b.png">
-    </details>
-
-- Click on the **Initiate Credential-Issuance(OIDC4CI)** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/ada8e092-3041-499b-8b51-12fa6ef942f5.png">
-    </details>
-
-    > If an error occurs, refresh the page and try again.
-
-- Click on the **Scan QR** button in the wallet
-
-- Scan the QR code
-
-- Click on the **Save** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png">
-    </details>
-
-- Click on **Get Compliancy Credential** at the bottom of the page
-
-- Click on **FIWARE Compliance Service**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/wallet/97f0f9fb-8c66-4bcf-beb6-9542617d2a5e.png">
-    </details>
-
-- Click on the **Home** button
-
-- Select **NaturalPersonCredential ldp_vc** and click on the **Initiate Credential-Issuance(OIDC4CI)** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/4d5d4a1e-c45e-4065-95ad-9fdc6db43461.png">
-    </details>
-
-- Scan and save this second QR code in the wallet
-
-    > You should now have 3 verifiable credentials in your wallet.
+    - GaiaXParticipantCredential ldp_vc + FIWARE Compliance Service
+    - NaturalPersonCredential ldp_vc
 
 - Go to the [OnBoarding Portal](https://onboarding-portal.dsba.fiware.dev/)
 
@@ -445,154 +394,140 @@
 
 ## Usage
 
-> ⚠️ The user documentation is being written and is currently unfinished
-
-- Go to [Keycloak](https://keycloak.example.com/)
-
-- Log in to the Administration Console
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
-    </details>
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
-    </details>
-
-- Open the **vc-issuer** realm
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/5f7a79b3-d8d0-410f-9f93-971babded507.png">
-    </details>
-
-- Go to the **Users** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
-    </details>
-
-- Open the **admin** user details
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/a7ff5b41-5e02-493e-9d93-1b9285d10e1d.png">
-    </details>
-
-- Go to the **Role mapping** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
-    </details>
-
-- Click the **Assign role** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
-    </details>
-
-- Filter the roles by clients
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
-    </details>
-
-- Assin the **customer** and or **seller** roles
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/cb8aaabb-0cdb-4e0e-971b-df9d7db0eac7.png">
-    </details>
-
-- From the computer, go to https://keycloak.example.com/realms/vc-issuer/account/
-
-- Go to **Verifiable Credentials**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e156a8a8-5a3a-4ada-8c01-0777bea4cdf9.png">
-    </details>
-
-- Login using the **vc-issuer** realm **admin** user
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/2681a735-c085-460f-ad09-4ab41fb7d204.png">
-    </details>
-
-- Select **MarketplaceUserCredential ldp_vc** in the drop-down list
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/4c5ae335-9451-4bc1-9ad8-9213108af334.png">
-    </details>
-
-- Click on the **Initiate Credential-Issuance(OIDC4CI)** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/ada8e092-3041-499b-8b51-12fa6ef942f5.png">
-    </details>
-
-    > If an error occurs, refresh the page and try again.
-
-- Click on the **Scan QR** button in the wallet
-
-- Scan the QR code
-
-- Click on the **Save** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/wallet/de69fa75-bc5c-45d1-aaa2-09994115d62c.png">
-    </details>
-
-- Go to the [DOME Marketplace](https://marketplace.dsba.fiware.dev)
-
-- Click on the **Sign in** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/d645ea40-d70a-4d13-a3ab-5c6b6c08d6d1.png">
-    </details>
-
-- Select **VC Login** and click on the **Sign in* button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
-    </details>
-
-- Click on the admin user then click on **settings**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
-    </details>
-
-- Go to the **Contact mediums** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/d32e4c25-ba32-4613-9c5d-e1c2dda4aabf.png">
-    </details>
-
-- Create a new billing address
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/b1e15fd8-4cdc-4b08-ab28-73d8d0952b5d.png">
-    </details>
-
-### Consumer
-
 ### Provider
+
+#### walt.id SSI Kit configuration
+
+- Create the following vc template file **ExampleCredential.json** and place it inside **vc-templates**
+
+    ```json
+    {
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "credentialSchema": {
+            "id": "https://raw.githubusercontent.com/FIWARE-Ops/tech-x-challenge/main/schema.json",
+            "type": "FullJsonSchemaValidator2021"
+        },
+        "credentialSubject": {
+            "type": "gx:NaturalParticipant",
+            "familyName": "User",
+            "firstName": "User",
+            "lastName": "User",
+            "roles": [
+                {
+                    "names": [
+                        "LEGAL_REPRESENTATIVE"
+                    ],
+                    "target": "did:web:onboarding"
+                }
+            ]
+        },
+        "id": "urn:uuid:00000000-0000-0000-0000-000000000000",
+        "issued": "2023-01-01T00:00:00Z",
+        "issuer": "did:web:example.com",
+        "validFrom": "2023-01-01T00:00:00Z",
+        "issuanceDate": "2023-01-01T00:00:00Z",
+        "type": [
+            "ExampleCredential"
+        ]
+    }
+    ```
+
+- Edit `id`, `issuer`, and `type[0]`
+
+#### Credentials config service configuration
+
+- Edit `id` and `oidcScopes.default[2].type` then create the entry
+
+    ```
+    curl --location "http://localhost:8090/service" --header "Content-Type: application/json" --data-binary @- << EOF
+    {
+        "id": "example",
+        "defaultOidcScope": "default",
+        "oidcScopes": {
+            "default": [
+                {
+                    "type": "VerifiableCredential",
+                    "trustedParticipantsLists": [
+                        "https://tir.dsba.fiware.dev"
+                    ],
+                    "trustedIssuersLists": []
+                },
+                {
+                    "type": "LegalPersonCredential",
+                    "trustedParticipantsLists": [
+                        "https://tir.dsba.fiware.dev"
+                    ],
+                    "trustedIssuersLists": []
+                },
+                {
+                    "type": "ExampleCredential",
+                    "trustedParticipantsLists": [
+                        "https://tir.dsba.fiware.dev"
+                    ],
+                    "trustedIssuersLists": [
+                        "http://trusted-issuers-list:8080"
+                    ]
+                }
+            ]
+        }
+    }
+    EOF
+    ```
+
+- Check that the entry has been created
+
+    ```
+    curl "http://localhost:8090/service/example"
+    ```
+
+#### Trusted issuers list configuration
+
+- Edit `did`, `credentials[0].credentialsType`, `credentials[0].claims[0].allowedValues[0].names[0]` and `credentials[0].claims[0].allowedValues[0].target` then create the entry
+
+    ```
+    curl --location "http://localhost:8080/issuer" --header "Content-Type: application/json" --data-binary @- << EOF
+    {
+        "did": "did:web:example.com",
+        "credentials": [
+            {
+                "validFor": {
+                    "from": "2022-07-21T17:32:28Z",
+                    "to": "2040-07-21T17:32:28Z"
+                },
+                "credentialsType": "ExampleCredential",
+                "claims": [
+                    {
+                        "name": "roles",
+                        "allowedValues": [
+                            {
+                                "names": [
+                                    "EXAMPLE"
+                                ],
+                                "target": "did:web:example.com"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "validFor": {
+                    "from": "2022-07-21T17:32:28Z",
+                    "to": "2040-07-21T17:32:28Z"
+                },
+                "credentialsType": "VerifiableCredential"
+            }
+        ]
+    }
+    EOF
+    ```
+
+- Check that the entry has been created
+
+    ```
+    curl "http://localhost:8080/v4/issuers/did:web:example.com"
+    ```
 
 #### Keycloak configuration
 
@@ -744,55 +679,6 @@
         <img src="images/keycloak/05b701d6-2428-441c-b315-1397f19eabda.png">
     </details>
 
-#### Marketplace configuration
-
-- Authenticate to the [DOME Marketplace](https://marketplace.dsba.fiware.dev)
-
-- Go to the **My stock** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e94319f7-e57e-4eb3-90d6-a44b44de8e41.png">
-    </details>
-
-- Go to the **Catalogs** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e3aacce1-822d-4fe2-b8db-45e6e44f7706.png">
-    </details>
-
-- Click the **New** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/27abf8e7-7fca-4e40-9d28-4c6088d0ea0a.png">
-    </details>
-
-- Create a new catalog
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/e8168f72-587d-4cf9-acb1-8f29b3e58e82.png">
-    </details>
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/690e68c6-eb38-474b-a034-44183b1c6703.png">
-    </details>
-
-- Select the **Launched** status and click on the **Update** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/51cd0d6d-48bc-4496-9f66-f5d4fd4bd476.png">
-    </details>
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/9d2fdae9-38de-4112-8290-84b152b0c333.png">
-    </details>
-
 #### ouranos-ws configuration
 
 - Authenticate to [ouranos-ws](https://app.dscaas.ouranos-ws.com)
@@ -852,3 +738,57 @@
 - Go to **Administration** - **Services**
 
 - Click the **+** button to create a new service
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/90cca0d1-e778-4cf4-8886-4c75ffb3f346.png">
+    </details>
+
+- Go to **Workspaces**
+
+- Click the **+** button to create a new workspace
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/5044a98b-4964-4be2-bcf9-c239b822eace.png">
+    </details>
+
+## Annexes
+
+### Generate a VC and add it to the Wallet
+
+> To do this, you will need a computer and a phone.
+
+From the computer:
+
+- Go to the Keycloak account management (https://keycloak.example.com/realms/vc-issuer/account/)
+
+- Click on **Verifiable Credentials**
+
+- Sign in using the **admin** user of the **vc-issuer** realm
+
+- Select the desired verifiable credential from the drop-down list
+
+    > Make sure you choose the verifiable credential with the right type, for example it could be **ldp_vc** or **jwt_vc_json**.
+
+- Click on the **Initiate Credential-Issuance(OIDC4CI)** button
+
+    > A QR code should be displayed. If an error occurs, refresh the page and try again.
+
+From the phone:
+
+- Access the Fiware [wallet](https://demo-wallet.fiware.dev/)
+
+- Click on the **Scan QR** button
+
+    > The operating system and the browser will ask to authorize access to the camera.
+
+- Scan the QR code displayed on the computer screen
+
+    > If an error occurs, refresh the page on the computer, generate a new QR code and try again.
+
+- Click on the **Save** button
+
+- Optional: If a compliancy credential is requested, click on the **Get Compliancy Credential** button at the bottom of the page and click on the corresponding **Compliance Service** button
+
+- Click on the **Home** button
