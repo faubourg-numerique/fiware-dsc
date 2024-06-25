@@ -11,7 +11,7 @@ verifier:
     tirAddress: "https://tir.dsba.fiware.dev/v3/issuers"
     sessionExpiry: 30
 ssiKit:
-    auditorURL: "http://walt-id-ssi-kit:7003"
+    auditorURL: "http://waltid-ssikit:7003"
 configRepo:
     configEndpoint: "http://credentials-config-service:8080"
     services:
