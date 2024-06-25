@@ -40,6 +40,7 @@
         <a href="#annexes">Annexes</a>
         <ul>
             <li><a href="#generate-a-vc-and-add-it-to-the-wallet">Generate a VC and add it to the Wallet</a></li>
+            <li><a href="#assign-a-role-to-a-keycloak-user">Assign a role to a Keycloak user</a></li>
         </ul>
     </li>
 </ul>
@@ -792,3 +793,6 @@ From the phone:
 - Optional: If a compliancy credential is requested, click on the **Get Compliancy Credential** button at the bottom of the page and click on the corresponding **Compliance Service** button
 
 - Click on the **Home** button
+
+### Assign a role to a Keycloak user
+
