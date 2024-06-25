@@ -11,4 +11,10 @@
 /config/vc-verifier/server.yaml
 /config/waltid-ssikit/signatory.conf
 
+/vc-templates/*
+!/vc-templates/GaiaXParticipantCredential.json
+!/vc-templates/MarketplaceUserCredential.json
+!/vc-templates/NaturalPersonCredential.json
+!/vc-templates/PacketDeliveryService.json
+
 /volumes/
