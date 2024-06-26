@@ -40,7 +40,6 @@
         <a href="#annexes">Annexes</a>
         <ul>
             <li><a href="#generate-a-vc-and-add-it-to-the-wallet">Generate a VC and add it to the Wallet</a></li>
-            <li><a href="#assign-a-role-to-a-keycloak-user">Assign a role to a Keycloak user</a></li>
         </ul>
     </li>
 </ul>
@@ -684,74 +683,307 @@
 
 - Authenticate to [ouranos-ws](https://app.dscaas.ouranos-ws.com)
 
-- Go to **Administration** - **Authorization registries**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/b113e43f-b059-4912-8772-5fb1d3e151cd.png">
-    </details>
+- Go to **Administration** → **Authorization registries**
 
 - Click the **+** button to create a new authorization registry
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/17cfcf8c-b1ca-4e0a-984d-a5e453779b13.png">
-    </details>
+    | Name                   | Value                                                                         |
+    |------------------------|-------------------------------------------------------------------------------|
+    | Name                   | Example authorization registry                                                |
+    | Description            |                                                                               |
+    | Identifier             | did:web:example.com                                                           |
+    | Certificates           | MIIE5DCCA8ygAwIBAgIS...<br>MIIFFjCCAv6gAwIBAgIR...<br>MIIFFjCCAv6gAwIBAgIR... |
+    | Scheme                 | https                                                                         |
+    | Host                   | idm.example.com                                                               |
+    | Port                   | 443                                                                           |
+    | Path                   |                                                                               |
+    | Oauth2 token path      | /oauth2/token                                                                 |
+    | Delegation path        | /ar/delegation                                                                |
+    | Policy path            | /ar/policy                                                                    |
+    | Implementation name    | Keyrock                                                                       |
+    | Implementation version | 0.0.0                                                                         |
 
-- Go to **Administration** - **Authorization registry grants**
+- Go to **Administration** → **Authorization registry grants**
 
 - Click the **+** button to create a new authorization registry grant
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/253e38c8-ae45-413f-a83f-398dfc0c8e4d.png">
-    </details>
+    | Name         | Value                                                                         |
+    |--------------|-------------------------------------------------------------------------------|
+    | Name         | Example authorization registry grant                                          |
+    | Description  |                                                                               |
+    | Identifier   | did:web:example.com                                                           |
+    | Certificates | MIIE5DCCA8ygAwIBAgIS...<br>MIIFFjCCAv6gAwIBAgIR...<br>MIIFFjCCAv6gAwIBAgIR... |
+    | Private key  | MIIEvAIBADANBgkqhkiG...                                                       |
 
-- Go to **Administration** - **VC verifiers**
+- Go to **Administration** → **VC verifiers**
 
 - Click the **+** button to create a new vc verifier
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/839315fb-b1e8-4b33-bd47-dcd3f223a0ff.png">
-    </details>
+    | Name                             | Value                   |
+    |----------------------------------|-------------------------|
+    | Name                             | Example vc verifier     |
+    | Description                      |                         |
+    | Did                              | did:web:example.com     |
+    | Scheme                           | https                   |
+    | Disable certificate verification | ☐                       |
+    | Host                             | vc-verifier.example.com |
+    | Port                             | 443                     |
+    | Path                             |                         |
+    | Implementation name              | Fiware VC Verifier      |
+    | Implementation version           | 2.0.5                   |
 
-- Go to **Administration** - **Trusted issuers lists**
+- Go to **Administration** → **Trusted issuers lists**
 
 - Click the **+** button to create a new trusted issuers list
 
     > To be reviewed, the trusted issuers list is not publicly accessible.
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/839315fb-b1e8-4b33-bd47-dcd3f223a0ff.png">
-    </details>
+    | Name                   | Value                        |
+    |------------------------|------------------------------|
+    | Name                   | Example trusted issuers list |
+    | Description            |                              |
+    | Scheme                 | https                        |
+    | Host                   | til.example.com              |
+    | Port                   | 443                          |
+    | Path                   |                              |
+    | Implementation name    | Fiware Trusted Issuers List  |
+    | Implementation version | 0.0.1                        |
 
-- Go to **Administration** - **Context brokers**
+- Go to **Administration** → **Context brokers**
 
 - Click the **+** button to create a new context broker
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/e0bb0842-2ae8-41a7-95a1-2453ecd089cd.png">
-    </details>
+    | Name                             | Value                      |
+    |----------------------------------|----------------------------|
+    | Name                             | Example context broker     |
+    | Description                      |                            |
+    | Scheme                           | https                      |
+    | Disable certificate verification | ☐                          |
+    | Host                             | context-broker.example.com |
+    | Port                             | 443                        |
+    | Path                             |                            |
+    | Multi tenancy enabled            | ☐                          |
+    | Pagination max limit             | 1000                       |
+    | Implementation name              | Orion-LD                   |
+    | Implementation version           | 1.5.1                      |
+    | Custom headers                   | ☐                          |
 
-- Go to **Administration** - **Services**
+- Go to **Administration** → **Services**
 
 - Click the **+** button to create a new service
 
-    <details>
-        <summary>Image</summary>
-        <img src="images/ouranos-ws/90cca0d1-e778-4cf4-8886-4c75ffb3f346.png">
-    </details>
+    | Name                   | Value                        |
+    |------------------------|------------------------------|
+    | Name                   | Example service              |
+    | Description            |                              |
+    | Context broker         | Example context broker       |
+    | Authorization required | ☑                            |
+    | Authorization mode     | SIOP 2                       |
+    | VC verifier            | Example vc verifier          |
+    | Trusted issuers list   | Example trusted issuers list |
+    | Client id              | example                      |
 
 - Go to **Workspaces**
 
 - Click the **+** button to create a new workspace
 
+    | Name                         | Value                                |
+    |------------------------------|--------------------------------------|
+    | Name                         | Example workspace                    |
+    | Description                  |                                      |
+    | Data model name              | example                              |
+    | Default data model url       | https://ngsi-ld.ouranos-ws.com/      |
+    | Service                      | Example service                      |
+    | Temporal services            |                                      |
+    | Enable access rules          | ☑                                    |
+    | Authorization registry       | Example authorization registry       |
+    | Authorization registry grant | Example authorization registry grant |
+
+- Go back to **Workspaces**
+
+- Refer to [this annex](#generate-a-vc-and-add-it-to-the-wallet) to generate and add to the Wallet a **ExampleCredential ldp_vc**
+
+- Click on the QR code button corresponding to **Example workspace**
+
     <details>
         <summary>Image</summary>
-        <img src="images/ouranos-ws/5044a98b-4964-4be2-bcf9-c239b822eace.png">
+        <img src="images/ouranos-ws/feda6119-064f-485b-a8e9-a383344909eb.png">
+    </details>
+
+- Scan the QR code with the Wallet and click on the **Send credential** button
+
+- Click on the gear button to access the data model
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/421fa422-10e9-4ebf-a1b2-3685b3f3b1d0.png">
+    </details>
+
+- Click the **+** button to create a new type
+
+    | Name                               | Value                                                                                                                                        |
+    |------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+    | Name                               | Streetlight                                                                                                                                  |
+    | Description                        |                                                                                                                                              |
+    | Url                                | https://ngsi-ld.ouranos-ws.com/Streetlight                                                                                                   |
+    | Data model group                   | Unset                                                                                                                                        |
+    | Standard data model based          | ☑                                                                                                                                            |
+    | Standard data model type           | Smart Data Models                                                                                                                            |
+    | Standard data model definition url | https://raw.githubusercontent.com/smart-data-models/dataModel.Streetlighting/76cff6cca0c1bd02946db73e0be7e4ed5b582903/Streetlight/model.yaml |
+
+- Click the down arrow button to import properties
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/24223b16-cc8e-48b1-846d-18cc956c8b3a.png">
+    </details>
+
+- Select the **name**, **description** and **powerState** properties
+
+- Click on the **Import** button at the end of the page
+
+- Click on the **Types** link to go back to the data model
+
+- Click on the gear button generate the data model
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/421fa422-10e9-4ebf-a1b2-3685b3f3b1d0.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/8fcd6fac-b8fc-45a0-8280-0e7c29cb69c9.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/d8b73cca-eb47-4869-a2ad-1703f534eb68.png">
+    </details>
+
+- Click on the **Example workspace** button to go back to the workspace
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/aa12c02e-b7a3-46c8-b737-a18a36a17853.png">
+    </details>
+
+- Click on the **Data services** button
+
+- Click the **+** button to create a new data service
+
+    | Name       | Value                    |
+    |------------|--------------------------|
+    | Name       | Streetlight data service |
+    | Type       | Streetlight              |
+    | Properties | powerState               |
+    | Actions    | GET                      |
+    | Is demand  | ☐                        |
+    | Is offer   | ☑                        |
+
+- Click on the **Example workspace** button to go back to the workspace
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/aa12c02e-b7a3-46c8-b737-a18a36a17853.png">
+    </details>
+
+- Click on the **Roles** button
+
+- Click the **+** button to create a new role
+
+    | Name                       | Value               |
+    |----------------------------|---------------------|
+    | Name                       | EXAMPLE             |
+    | Not before                 | 2024-01-01 00:00    |
+    | Not on or after            | 2040-01-01 00:00    |
+    | Data service provider id   | did:web:example.com |
+    | Verifiable credential type | ExampleCredential   |
+
+- Click the **+** button to create a data service access
+
+    | Name         | Value                    |
+    |--------------|--------------------------|
+    | Data service | Streetlight data service |
+
+- Click on the **Example workspace** button to go back to the workspace
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/aa12c02e-b7a3-46c8-b737-a18a36a17853.png">
+    </details>
+
+- Click on the **Contracts** button
+
+- Click the **+** button to create a new contract
+
+    > ⚠️ The stakeholder did and name are those of the consumer.
+
+    | Name                       | Value               |
+    |----------------------------|---------------------|
+    | Contract type              | Data consumer       |
+    | Stakeholder did            | did:web:example.com |
+    | Stakeholder name           | Example             |
+    | Valid from time            | 1704067200          |
+    | Valid to time              | 576545472000        |
+    | Verifiable credential type | ExampleCredential   |
+
+- Click the **+** button to create a new contract detail
+
+    | Name | Value   |
+    |------|---------|
+    | Role | EXAMPLE |
+
+- Click on the contract id (urn:ngsi-ld:Contract:00000000-0000-0000-0000-000000000000) to go back to the contract
+
+- Click on the synchronization button to synchronize the contract
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/02e5b9fd-0000-4a91-a0f4-22bd3a20dcc8.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/b033d570-915b-4049-9392-b3e36b7714f9.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/e374b8b5-0e0c-4d31-a058-8b0386d63a16.png">
+    </details>
+
+- Click on the **Example workspace** button to go back to the workspace
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/aa12c02e-b7a3-46c8-b737-a18a36a17853.png">
+    </details>
+
+- Click on the **Roles** button
+
+- Click on the **EXAMPLE** link
+
+- Click on the synchronization button to synchronize the role
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/02e5b9fd-0000-4a91-a0f4-22bd3a20dcc8.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/3274eea4-2bbe-4052-a26f-267b4e201629.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/ff5d2d2e-078c-4d99-8cc1-99b16151cd83.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/ouranos-ws/b35add43-cdb8-4ad7-bc1a-00fbc1d1620c.png">
     </details>
 
 ## Annexes
@@ -793,6 +1025,3 @@ From the phone:
 - Optional: If a compliancy credential is requested, click on the **Get Compliancy Credential** button at the bottom of the page and click on the corresponding **Compliance Service** button
 
 - Click on the **Home** button
-
-### Assign a role to a Keycloak user
-
