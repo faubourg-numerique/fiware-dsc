@@ -1,4 +1,4 @@
-Refer to # fiware-dsc
+# fiware-dsc
 
 > ⚠️ This documentation is being written and is currently uncomplete.
 
