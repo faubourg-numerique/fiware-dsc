@@ -1,4 +1,4 @@
-# fiware-dsc
+Refer to # fiware-dsc
 
 > ⚠️ This documentation is being written and is currently uncomplete.
 
@@ -34,12 +34,20 @@
                     <li><a href="#ouranos-ws-configuration">ouranos-ws configuration</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#provider">Consumer</a>
+                <ul>
+                    <li><a href="#human-to-machine-(h2m)">Human to machine</a></li>
+                    <li><a href="#machine-to-machine-(m2m)">Machine to machine</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
     <li>
         <a href="#annexes">Annexes</a>
         <ul>
             <li><a href="#generate-a-vc-and-add-it-to-the-wallet">Generate a VC and add it to the Wallet</a></li>
+            <li><a href="#create-a-client-in-keycloak">Create a client in Keycloak</a></li>
         </ul>
     </li>
 </ul>
@@ -531,153 +539,7 @@
 
 #### Keycloak configuration
 
-- Create the following Keycloak client file **did_web_example.com.json**
-
-    ```json
-    {
-        "clientId": "did:web:example.com",
-        "description": "did:web:example.com",
-        "surrogateAuthRequired": false,
-        "enabled": true,
-        "alwaysDisplayInConsole": false,
-        "clientAuthenticatorType": "client-secret",
-        "secret": "**********",
-        "redirectUris": [],
-        "webOrigins": [],
-        "notBefore": 0,
-        "bearerOnly": false,
-        "consentRequired": false,
-        "standardFlowEnabled": true,
-        "implicitFlowEnabled": false,
-        "directAccessGrantsEnabled": false,
-        "serviceAccountsEnabled": false,
-        "publicClient": false,
-        "frontchannelLogout": false,
-        "protocol": "SIOP-2",
-        "attributes": {
-            "post.logout.redirect.uris": "+",
-            "client.secret.creation.time": "1675260539",
-            "expiryInMin": "3600",
-            "ExampleCredential_claims": "email,firstName,lastName,roles",
-            "vctypes_ExampleCredential": "ldp_vc,jwt_vc_json"
-        },
-        "authenticationFlowBindingOverrides": {},
-        "fullScopeAllowed": true,
-        "nodeReRegistrationTimeout": -1,
-        "defaultClientScopes": [],
-        "optionalClientScopes": [],
-        "access": {
-            "view": true,
-            "configure": true,
-            "manage": true
-        }
-    }
-    ```
-
-- Edit `clientId`, `description`, and the keys of `attributes.ExampleCredential_claims` and `attributes.vctypes_ExampleCredential`
-
-- Go to the **Clients** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
-    </details>
-
-- Click on **Import client**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/57e30dcb-305e-4291-98aa-1d149c119947.png">
-    </details>
-
-- Select the **did_web_example.com.json** resource file and click on the **Save** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/211dd4d1-8939-4d65-9316-6891c6520022.png">
-    </details>
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/0c08e99b-b4e8-4b3c-aee0-f6e4ca43072e.png">
-    </details>
-
-- Go back to the **Clients** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
-    </details>
-
-- Click on **did:web:example.com**
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/70d91309-f6c0-44a9-9e8e-bb7815459e82.png">
-    </details>
-
-- Go to the **Roles** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/c3f083c6-89ee-469c-8c28-d7f0e7f8006a.png">
-    </details>
-
-- Click on the **Create role** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/fcf33d07-552a-45e0-842b-77e5bc678075.png">
-    </details>
-
-- Enter the role name (e.g. EXAMPLE) and click on the **Save** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/58695ba0-00fd-4abd-9f7c-ad53aa36a439.png">
-    </details>
-
-- Go to the **Users** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
-    </details>
-
-- Open the **admin** user details
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/a7ff5b41-5e02-493e-9d93-1b9285d10e1d.png">
-    </details>
-
-- Go to the **Role mapping** tab
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
-    </details>
-
-- Click the **Assign role** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
-    </details>
-
-- Filter the roles by clients
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
-    </details>
-
-- Select the **EXAMPLE** role and click the **Assign** button
-
-    <details>
-        <summary>Image</summary>
-        <img src="images/keycloak/05b701d6-2428-441c-b315-1397f19eabda.png">
-    </details>
+- Refer to [this annex](#create-a-client-in-keycloak) to create a client in Keycloak
 
 #### ouranos-ws configuration
 
@@ -702,6 +564,8 @@
     | Policy path            | /ar/policy                                                                    |
     | Implementation name    | Keyrock                                                                       |
     | Implementation version | 0.0.0                                                                         |
+
+    > If your **full-certificate-chain.pem** file only contains two certificates, repeat the second in the third one's field.
 
 - Go to **Administration** → **Authorization registry grants**
 
@@ -986,6 +850,77 @@
         <img src="images/ouranos-ws/b35add43-cdb8-4ad7-bc1a-00fbc1d1620c.png">
     </details>
 
+#### orion-ld configuration
+
+- Create a streetlight entity
+
+    > Edit the **Link** header and the entity id.
+
+    ```
+    curl --location "http://localhost:1026/ngsi-ld/v1/entities" --header "Content-Type: application/json" --header "Link: <https://data-models.dscaas.ouranos-ws.com/example/1/context.jsonld>" --data-binary @- << EOF
+    {
+        "id": "urn:ngsi-ld:Streetlight:00000000-0000-0000-0000-000000000000",
+        "type": "Streetlight",
+        "name": {
+            "type": "Property",
+            "value": "Streetlight 1"
+        },
+        "description": {
+            "type": "Property",
+            "value": "Streetlight 1"
+        },
+        "powerState": {
+            "type": "Property",
+            "value": "on"
+        }
+    }
+    EOF
+    ```
+
+### Consumer
+
+- Refer to [this annex](#create-a-client-in-keycloak) to create a client in Keycloak
+
+- Refer to [this annex](#generate-a-vc-and-add-it-to-the-wallet) to generate and add to the Wallet a **ExampleCredential ldp_vc**
+
+#### Human to machine (H2M)
+
+To write up
+
+#### Machine to machine (M2M)
+
+- Clone the M2M example repository
+
+    ```
+    git clone https://github.com/faubourg-numerique/fiware-dsc-m2m-example.git
+    ```
+
+- Access the cloned repository
+
+    ```
+    cd fiware-dsc-m2m-example
+    ```
+
+- Install the dependencies
+
+    ```
+    npm install
+    ```
+
+- Create and edit the environment file
+
+    ```
+    cp ./.env.example ./.env
+    ```
+
+- Export the **ExampleCredential** verifiable credential from the Wallet to **verifiable-credential.json**
+
+- Run the script
+
+    ```
+    sudo node index.js
+    ```
+
 ## Annexes
 
 ### Generate a VC and add it to the Wallet
@@ -1025,3 +960,153 @@ From the phone:
 - Optional: If a compliancy credential is requested, click on the **Get Compliancy Credential** button at the bottom of the page and click on the corresponding **Compliance Service** button
 
 - Click on the **Home** button
+
+### Create a client in Keycloak
+
+- Create the following Keycloak client file **did_web_example.com.json**
+
+    ```json
+    {
+        "clientId": "did:web:example.com",
+        "description": "did:web:example.com",
+        "surrogateAuthRequired": false,
+        "enabled": true,
+        "alwaysDisplayInConsole": false,
+        "clientAuthenticatorType": "client-secret",
+        "secret": "**********",
+        "redirectUris": [],
+        "webOrigins": [],
+        "notBefore": 0,
+        "bearerOnly": false,
+        "consentRequired": false,
+        "standardFlowEnabled": true,
+        "implicitFlowEnabled": false,
+        "directAccessGrantsEnabled": false,
+        "serviceAccountsEnabled": false,
+        "publicClient": false,
+        "frontchannelLogout": false,
+        "protocol": "SIOP-2",
+        "attributes": {
+            "post.logout.redirect.uris": "+",
+            "client.secret.creation.time": "1675260539",
+            "expiryInMin": "3600",
+            "ExampleCredential_claims": "email,firstName,lastName,roles",
+            "vctypes_ExampleCredential": "ldp_vc,jwt_vc_json"
+        },
+        "authenticationFlowBindingOverrides": {},
+        "fullScopeAllowed": true,
+        "nodeReRegistrationTimeout": -1,
+        "defaultClientScopes": [],
+        "optionalClientScopes": [],
+        "access": {
+            "view": true,
+            "configure": true,
+            "manage": true
+        }
+    }
+    ```
+
+- Edit `clientId`, `description`, and the keys of `attributes.ExampleCredential_claims` and `attributes.vctypes_ExampleCredential`
+
+- Go to the **Clients** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
+    </details>
+
+- Click on **Import client**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/57e30dcb-305e-4291-98aa-1d149c119947.png">
+    </details>
+
+- Select the **did_web_example.com.json** resource file and click on the **Save** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/211dd4d1-8939-4d65-9316-6891c6520022.png">
+    </details>
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/0c08e99b-b4e8-4b3c-aee0-f6e4ca43072e.png">
+    </details>
+
+- Go back to the **Clients** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/1d4683b1-8d9e-4896-9701-dfa1f1708cb6.png">
+    </details>
+
+- Click on **did:web:example.com**
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/70d91309-f6c0-44a9-9e8e-bb7815459e82.png">
+    </details>
+
+- Go to the **Roles** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/c3f083c6-89ee-469c-8c28-d7f0e7f8006a.png">
+    </details>
+
+- Click on the **Create role** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/fcf33d07-552a-45e0-842b-77e5bc678075.png">
+    </details>
+
+- Enter the role name (e.g. EXAMPLE) and click on the **Save** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/58695ba0-00fd-4abd-9f7c-ad53aa36a439.png">
+    </details>
+
+- Go to the **Users** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/8470f80f-2dec-465f-a36c-503083adedfb.png">
+    </details>
+
+- Open the **admin** user details
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a7ff5b41-5e02-493e-9d93-1b9285d10e1d.png">
+    </details>
+
+- Go to the **Role mapping** tab
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/a118ec77-1c87-43f2-823b-2c61e0f49b9a.png">
+    </details>
+
+- Click the **Assign role** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/af9c6b74-0587-4731-bfd2-6ce051b25ef2.png">
+    </details>
+
+- Filter the roles by clients
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/2ad3a207-7e70-4835-87bd-9f5a81f51e9b.png">
+    </details>
+
+- Select the **EXAMPLE** role and click the **Assign** button
+
+    <details>
+        <summary>Image</summary>
+        <img src="images/keycloak/05b701d6-2428-441c-b315-1397f19eabda.png">
+    </details>
