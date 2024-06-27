@@ -7,7 +7,7 @@ consumers:
     - "token-key"
     - "tir-key"
 services:
-  - url: "http://orion-ld:1026"
+  - url: "http://orionld:1026"
     name: "context-broker"
     port: 1026
     protocol: "http"

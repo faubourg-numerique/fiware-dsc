@@ -55,7 +55,7 @@ services:
 
     orion-ld:
         image: "fiware/orion-ld:${ORION_LD_TAG}"
-        hostname: "orion-ld"
+        hostname: "orionld"
         ports:
             - "${ORION_LD_PORT}:1026"
         environment:
@@ -123,6 +123,8 @@ services:
         ports:
             - "${KEYROCK_PORT}:3000"
         environment:
+            # DEBUG: "*"
+            # IDM_DEBUG: "true"
             IDM_DB_HOST: "mysql-keyrock"
             IDM_DB_USER: "root"
             IDM_DB_PASS: "root"
@@ -137,8 +139,8 @@ services:
             IDM_PR_TOKEN_ENDPOINT: "${TRUSTED_ISSUERS_REGISTRY_URL}${TRUSTED_ISSUERS_REGISTRY_TOKEN_ENDPOINT}"
             IDM_PR_PARTIES_ENDPOINT: "${TRUSTED_ISSUERS_REGISTRY_URL}${TRUSTED_ISSUERS_REGISTRY_PARTIES_PARTIES}"
             IDM_PR_CLIENT_ID: "${DID}"
-            IDM_PR_CLIENT_CRT: "${CERTIFICATE}"
-            IDM_PR_CLIENT_KEY: "${PRIVATE_KEY}"
+            IDM_PR_CLIENT_CRT: "${CERTIFICATE_ONE_LINE}"
+            IDM_PR_CLIENT_KEY: "${PRIVATE_KEY_ONE_LINE}"
         restart: "always"
         depends_on:
             - "mysql-keyrock"
