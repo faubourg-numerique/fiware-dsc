@@ -37,8 +37,8 @@
             <li>
                 <a href="#provider">Consumer</a>
                 <ul>
-                    <li><a href="#human-to-machine-(h2m)">Human to machine</a></li>
-                    <li><a href="#machine-to-machine-(m2m)">Machine to machine</a></li>
+                    <li><a href="#human-to-machine-h2m">Human to machine</a></li>
+                    <li><a href="#machine-to-machine-m2m">Machine to machine</a></li>
                 </ul>
             </li>
         </ul>
